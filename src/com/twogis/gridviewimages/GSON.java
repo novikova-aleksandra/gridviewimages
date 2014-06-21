@@ -81,7 +81,11 @@ public class GSON extends AsyncTask<Object, Void, List<String>> {
             List<String> urls = gson.fromJson(reader, listType);
             return urls;
         }
-        catch (JsonSyntaxException | IllegalStateException e) {
+        catch (JsonSyntaxException e) {
+            error = true;
+            return null;
+        }
+        catch (IllegalStateException e) {
             error = true;
             return null;
         }
